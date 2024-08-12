@@ -1,0 +1,15 @@
+---
+
+- name: "Play to Show ip route and verify if a route exists"
+  hosts: ios_routers
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: Show ip rotue
+      cisco.iosxr.iosxr_command:
+        commands:
+          - "show ip route"
+      register: output
+    - debug: var=output.stdout_lines

@@ -1,0 +1,9 @@
+---
+
+interfaces:
+  - intf: "loopback29"
+    ip_address: "29.29.29.29"
+    description: "made with ansible"
+    ipv6_address: ""
+    mask: " 255.255.255.255"
+    state: "up"

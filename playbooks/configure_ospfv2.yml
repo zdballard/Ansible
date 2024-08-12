@@ -1,0 +1,24 @@
+---
+
+- name: "PLAY 1 - CONFIUGRE OSPF ON IOS DEVICES"
+  hosts: ios_routers
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: "configure ospf"
+      cisco.ios.ios_config:
+        src: "Jinja2 Templates/base/ospf/ipv4_base_ospf_ios.j2"
+
+
+    -  name: Show IP OSPF Neighbors
+       cisco.ios.ios_command:
+         commands: 
+         - "show ip ospf neighbor"
+         - "show ip route ospf"
+       register: output
+    - debug: var=output.stdout_lines
+         
+   
+                         

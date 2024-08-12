@@ -1,0 +1,15 @@
+---
+
+interfaces:
+  - intf: "loopback0"
+    ip_address: "1.1.1.1"
+    ipv6_address: ""
+    description: "Ansible created Lo0"
+    mask: "255.255.255.255"
+    state: "up"
+  - intf: "G2"
+    ip_address: "10.1.2.1"
+    ipv6_address: ""
+    desription: "Created with Ansible"
+    mask: "255.255.255.0"
+    state: "up"

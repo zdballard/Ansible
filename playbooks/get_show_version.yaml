@@ -1,0 +1,20 @@
+---
+
+- name: "Playbook to get Show version of IOS Devices"
+  hosts: ios_routers
+  gather_facts: false
+  connection: network_cli
+
+
+  tasks:
+    - name: "run show version command"
+      cisco.ios.ios_command:
+        commands:
+          - "show version"
+      register: output
+    - debug: var=output.stdout_lines
+
+    #- name: Save output to ~/Ansible/device_info
+     # copy:
+      #  content: "{{ output.stdout | replace ('\\n', '\n') }}"
+       # dest: "show-output/{{ inventory_hostname }}.ios"

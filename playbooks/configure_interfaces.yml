@@ -1,0 +1,38 @@
+---
+
+- name: "PLAY 1 - CONFIGURE IOS INTERFACES"
+  hosts: ios_routers
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: "configure interfaces"
+      cisco.ios.ios_config:
+        src: "Jinja2 Templates/base/interface_config_ios.j2"
+      
+
+- name: "PLAY 2 - CONFIGURE XR INTERFACES"
+  hosts: xr_routers
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: "configure interfaces xr routers"
+      cisco.iosxr.iosxr_config:
+        src: "Jinja2 Templates/base/interface_config_xr.j2"
+
+
+- name: "Ping test"
+  hosts: 198.18.128.2
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: "ping Router 2"
+      cisco.ios.ios_ping:
+        dest: 10.1.2.2
+
+
+    
